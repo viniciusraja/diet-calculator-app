@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.18.1",
     "expo": "~50.0.3",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@tanstack/eslint-plugin-query": "^5.18.1",
     "@types/react": "~18.2.45",
     "typescript": "^5.1.3"
   },
