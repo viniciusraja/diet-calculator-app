@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactElement, useRef } from "react";
+import defaultQueryFn from "./utils/defaultQueryFn";
 
 type CustomQueryClientProviderProps = {
   children: ReactElement;
@@ -12,7 +13,7 @@ const CustomQueryClientProvider = ({
     new QueryClient({
       defaultOptions: {
         queries: {
-          //   queryFn: defaultQueryFn,
+          queryFn: defaultQueryFn,
           staleTime: 5 * 60 * 1000,
         },
       },
