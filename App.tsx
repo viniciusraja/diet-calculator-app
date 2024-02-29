@@ -1,17 +1,25 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import CustomQueryClientProvider from "./App/components/CustomQueryClientProvider";
+import FoodSearcher from "./App/components/FoodSearcher";
+import { GluestackUIProvider } from "@gluestack-ui/themed";
+import { config } from "@gluestack-ui/config";
+import { FormProvider, useForm } from "react-hook-form";
 
 export default function App() {
   useEffect(() => {}, []);
-
+  const form = useForm();
   return (
     <CustomQueryClientProvider>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
+      <GluestackUIProvider config={config}>
+        <FormProvider {...form}>
+          <View style={styles.container}>
+            <FoodSearcher />
+            <StatusBar style="auto" />
+          </View>
+        </FormProvider>
+      </GluestackUIProvider>
     </CustomQueryClientProvider>
   );
 }
