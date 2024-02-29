@@ -8,5 +8,5 @@ type Pagination = {
 
 export interface ResultPaginated<T> {
   page_info: Pagination;
-  results: T;
+  data: T;
 }
