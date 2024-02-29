@@ -17,10 +17,11 @@ const usePaginatedInfiniteQuery = <ResultType = unknown>({
       const lastPageFetched = lastPage as ResultPaginated<ResultType[]>;
       const maxPageNumber = lastPageFetched?.page_info?.total_pages;
       const nextPage = lastPageFetched?.page_info?.page + 1;
+
       return nextPage <= maxPageNumber ? nextPage : undefined;
     },
     ...rest,
-    initialPageParam: 0,
+    initialPageParam: 1,
     enabled,
   }) as UseInfiniteQueryResult<ResultType>;
 
