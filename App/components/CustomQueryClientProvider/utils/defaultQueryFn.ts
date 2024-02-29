@@ -6,28 +6,28 @@ export type QueryKeyFilters = [{ filters: string }];
 
 type DefaultQueryFn = {
   meta?: { responseType?: ResponseType };
-  pageNumber?: number;
+  pageParam?: number;
 } & QueryFunctionContext;
 
 const defaultQueryFn = async ({
   queryKey,
-  pageNumber,
+  pageParam,
   meta,
 }: DefaultQueryFn) => {
   const [queryParam] = queryKey as string[];
   const [filters] = queryKey?.filter(
     (key: any) => typeof key === "object"
   ) as QueryKeyFilters;
+
   const { responseType } = meta || {};
 
   const filtersToApply = filters?.filters || {};
-  console.log({ queryKey });
 
   const { data } = await api.get(queryParam, {
     responseType,
     params: {
       ...filtersToApply,
-      _page: pageNumber,
+      page: pageParam,
     },
   });
 
