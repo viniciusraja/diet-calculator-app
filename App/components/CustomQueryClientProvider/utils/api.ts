@@ -1,5 +1,10 @@
 import axios from "axios";
 import qs from "qs";
+import Constants from "expo-constants";
+
+const baseURL = Constants?.expoConfig?.hostUri
+  ? `http://${Constants.expoConfig?.hostUri?.split(`:`)?.shift()}:3000`
+  : process.env.EXPO_PUBLIC_API_BASE_URL;
 
 type AccType = {
   arrayParams: any;
@@ -32,6 +37,6 @@ const customParamSerializer = (params: any): string => {
 };
 
 export default axios.create({
-  baseURL: `${process.env.EXPO_PUBLIC_API_BASE_URL}/api/`,
+  baseURL: `${baseURL}/api/`,
   paramsSerializer: customParamSerializer,
 });
